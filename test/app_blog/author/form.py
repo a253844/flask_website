@@ -1,9 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, validators, PasswordField, ValidationError
+from wtforms import StringField, SubmitField, validators, PasswordField, ValidationError , TextAreaField 
 from wtforms.fields.html5 import EmailField
 from app_blog.author.model import UserReister
 from wtforms import BooleanField
-
 
 class FormRegister(FlaskForm):
 

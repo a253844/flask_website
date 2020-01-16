@@ -40,3 +40,29 @@ class Userlog(db.Model):
     def __repr__(self):
         return 'username:%s, time:%s , state:%s' % \
             (self.username, self.time , self.state)
+
+class UserRelation(db.Model):
+
+    __tablename__ = 'UserRelation'
+    id = db.Column(db.Integer, primary_key=True)
+    user_A = db.Column(db.Integer, db.ForeignKey('UserRgeisters.id'))
+    user_B = db.Column(db.Integer, db.ForeignKey('UserRgeisters.id'))
+    relation = db.Column(db.String(30), nullable=False)
+    time = db.Column(db.DateTime(timezone=True), nullable=False)
+
+    def __repr__(self):
+        return 'user_A:%s, user_B:%s , relation:%s , time:%s' % \
+            (self.user_A, self.user_B, self.relation , self.time)
+
+class UserMessage(db.Model):
+
+    __tablename__ = 'UserMessage'
+    id = db.Column(db.Integer, primary_key=True)
+    user_A = db.Column(db.Integer, db.ForeignKey('UserRgeisters.id'))
+    user_B = db.Column(db.Integer, db.ForeignKey('UserRgeisters.id'))
+    message = db.Column(db.String(250), nullable=False)
+    time = db.Column(db.DateTime(timezone=True), nullable=False)
+
+    def __repr__(self):
+        return 'user_A:%s, user_B:%s , messagepython:%s , time:%s' % \
+            (self.user_A, self.user_B, self.message , self.time)
